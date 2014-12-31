@@ -5,13 +5,13 @@ public class Dollar {
 	public Dollar(int a){
 		this.amount = a;
 	}
-	public void multiply(int x){
-		this.amount*=x;
-	}
 	public int getAmount() {
 		return amount;
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	public Dollar times(int i) { 
+		return new Dollar(this.amount*i);
 	}
 }
