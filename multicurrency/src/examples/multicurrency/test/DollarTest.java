@@ -5,6 +5,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import examples.multicurrency.Currency;
 import examples.multicurrency.Dollar;
 //problem:
 //$5 + 10 CHF = $10 if rate is 2:1
@@ -22,8 +23,11 @@ public class DollarTest {
 	@Test
 	public void testMultiply() {
 //		fail("Not yet implemented");
-		Dollar five = new Dollar(5); 
+//		Dollar five = Currency
+//		Dollar five = new Dollar(5); 
+		Dollar five = Currency.dollar(5);
 		Assert.assertEquals(new Dollar(10), five.times(2));
+		
 	}
 
 	public void testEquality(){
