@@ -10,6 +10,7 @@ import examples.multicurrency.Money;
 //$5 + 10 CHF = $10 if rate is 2:1
 //$5 + 10 * 1 CHF
 //$5 + 10 * ($0.5) = $ 10
+//$5 + $5 = $10
 //need to make a common currency class
 
 //rule: 
@@ -51,7 +52,15 @@ public class DollarTest {
 		assertEquals("CHF", Money.franc(10).getCurrency());
 	}
 	
+	//$5 + 10 CHF = $10 if rate is 2:1
+	//$5 + 10 * 1 CHF
+	//$5 + 10 * ($0.5) = $ 10
+	//$5 + $5 = $10
+	//how to represent multi-currency arithmatic?
 	public void testMultiCurrencyAddition(){
-		
+		Money five = Money.dollar(5);
+		Sum sum =  (Sum) five.plus(five);// the sum of two monies should be a sum
+		Money convertedSum = Bank.convert(sum,"USD");
+		 assertEquals(Money.dollar(10),sum);
 	}
 }

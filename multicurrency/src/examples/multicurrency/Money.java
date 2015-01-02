@@ -1,6 +1,6 @@
 package examples.multicurrency;
 
-public   class Money {
+public   class Money implements Expression {
 	protected int amount = 5;
 	
 	public Money(int amount, String currency){
@@ -46,4 +46,8 @@ public   class Money {
 	//		return "$";
 	//	}
 	//	 
+	public Expression plus(Money amountToAdd) {
+		// TODO Auto-generated method stub
+		return new Money(this.amount+amountToAdd.getAmount(),currency);
+	}
 }
