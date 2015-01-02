@@ -5,10 +5,13 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import examples.multicurrency.Currency;
+import examples.multicurrency.Franc;
+import examples.multicurrency.Money;
 import examples.multicurrency.Dollar;
 //problem:
 //$5 + 10 CHF = $10 if rate is 2:1
+//$5 + 10 * 1 CHF
+//$5 + 10 * ($0.5) = $ 10
 //need to make a common currency class
 
 //rule: 
@@ -21,16 +24,26 @@ import examples.multicurrency.Dollar;
 public class DollarTest {
 
 	@Test
-	public void testMultiply() {
+	public void testDollarMultiplication() {
 //		fail("Not yet implemented");
 //		Dollar five = Currency
 //		Dollar five = new Dollar(5); 
-		Dollar five = Currency.dollar(5);
+		Money five = Money.dollar(5);
 		Assert.assertEquals(new Dollar(10), five.times(2));
-		
+		Assert.assertEquals(new Dollar(15), five.times(3));
 	}
 
+	public void testFrancMultiplication() {
+		Money five = Money.franc(5);
+		Assert.assertEquals(new Franc(10), five.times(2));
+		Assert.assertEquals(new Franc(15), five.times(3));
+	}
+	
 	public void testEquality(){
-		Assert.assertTrue(new Dollar(5).equals(new Dollar(5)));
+		Assert.assertTrue(Money.franc(5).equals(Money.franc(5)));
+	}
+	
+	public void testMultiCurrencyAddition(){
+		
 	}
 }
