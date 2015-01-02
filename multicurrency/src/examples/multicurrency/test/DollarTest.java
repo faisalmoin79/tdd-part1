@@ -44,6 +44,11 @@ public class DollarTest {
 		Assert.assertTrue(Money.franc(5).equals(Money.franc(5)));
 	}
 	
+	public void testCurrency(){
+		Assert.assertEquals("$", Money.dollar(10).getCurrency());
+		Assert.assertEquals("CHF", Money.franc(10).getCurrency());
+	}
+	
 	public void testMultiCurrencyAddition(){
 		
 	}

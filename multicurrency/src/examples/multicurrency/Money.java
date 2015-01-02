@@ -24,4 +24,9 @@ public abstract class Money {
 		// TODO Auto-generated method stub
 		return this.amount==((Money)obj).getAmount() && this.getClass()==obj.getClass();
 	}
+
+	protected String currency;
+	public String getCurrency(){
+		return this.currency;
+	}
 }
