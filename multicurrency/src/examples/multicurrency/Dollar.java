@@ -14,9 +14,5 @@ public class Dollar extends Money{
 	public Dollar times(int i) { 
 		return new Dollar(this.amount*i);
 	}
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return this.amount==((Dollar)obj).getAmount();
-	}
+	 
 }

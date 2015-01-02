@@ -40,6 +40,7 @@ public class DollarTest {
 	}
 	
 	public void testEquality(){
+		Assert.assertTrue(Money.dollar(7).equals(Money.dollar(7)));
 		Assert.assertTrue(Money.franc(5).equals(Money.franc(5)));
 	}
 	
