@@ -1,13 +1,11 @@
 package examples.multicurrency.test;
 
-import junit.framework.Assert;
+import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-import examples.multicurrency.Franc;
 import examples.multicurrency.Money;
-import examples.multicurrency.Dollar;
 //problem:
 //$5 + 10 CHF = $10 if rate is 2:1
 //$5 + 10 * 1 CHF
@@ -29,24 +27,28 @@ public class DollarTest {
 //		Dollar five = Currency
 //		Dollar five = new Dollar(5); 
 		Money five = Money.dollar(5);
-		Assert.assertEquals(new Dollar(10), five.times(2));
-		Assert.assertEquals(new Dollar(15), five.times(3));
+		 assertEquals(Money.dollar(10), Money.dollar(10));
+		 assertEquals(Money.dollar(15), five.times(3));
+		
 	}
 
 	public void testFrancMultiplication() {
 		Money five = Money.franc(5);
-		Assert.assertEquals(new Franc(10), five.times(2));
-		Assert.assertEquals(new Franc(15), five.times(3));
+		assertEquals(Money.franc(15), five.times(2));
+		assertEquals(Money.franc(15), five.times(3));
 	}
 	
 	public void testEquality(){
-		Assert.assertTrue(Money.dollar(7).equals(Money.dollar(7)));
-		Assert.assertTrue(Money.franc(5).equals(Money.franc(5)));
+		assertTrue(Money.dollar(5).equals(Money.dollar(5)));
+		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
+		assertTrue(Money.franc(5).equals(Money.franc(5)));
+		assertFalse(Money.franc(5).equals(Money.franc(6)));
+		assertFalse(Money.franc(5).equals(Money.dollar(5)));
 	}
 	
 	public void testCurrency(){
-		Assert.assertEquals("$", Money.dollar(10).getCurrency());
-		Assert.assertEquals("CHF", Money.franc(10).getCurrency());
+		assertEquals("$", Money.dollar(10).getCurrency());
+		assertEquals("CHF", Money.franc(10).getCurrency());
 	}
 	
 	public void testMultiCurrencyAddition(){

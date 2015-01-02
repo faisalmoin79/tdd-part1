@@ -1,16 +1,19 @@
 package examples.multicurrency;
 
-public abstract class Money {
-	private int amount = 5;
+public   class Money {
+	protected int amount = 5;
 	
+	public Money(int amount, String currency){
+		this.amount = amount;
+		this.currency = currency;
+	}
 	public static Money dollar(int amount){
-		return new Dollar(amount);
+		return new Money(amount,"$");
 	} 
 	
 	public static Money franc(int amount){
-		return new Franc(amount);
+		return new Money(amount,"CHF");
 	} 	
- 
  
 	public int getAmount() {
 		return amount;
@@ -18,15 +21,29 @@ public abstract class Money {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public abstract Money times(int i);
+ 
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		return this.amount==((Money)obj).getAmount() && this.getClass()==obj.getClass();
+		Money money = ((Money)obj);
+		return this.amount==money.getAmount()  && this.getClass()==money.getClass();
 	}
 
 	protected String currency;
 	public String getCurrency(){
 		return this.currency;
 	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.amount+" "+this.currency;
+	}
+	public Money times(int i) { 
+			return new Money(this.amount*i,currency);
+		}
+	//	@Override
+	//	public String getCurrency() {
+	//		return "$";
+	//	}
+	//	 
 }
